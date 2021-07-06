@@ -28,7 +28,8 @@ signed main() {
     for (int i=max(2LL, l);i<=r;++i) {
         vector <int> &cur = di[i] ; 
         int n = cur.size(), cnt = 0 ; 
-        // Inclusion Exclusion part 
+        
+        // Inclusion Exclusion part....
         for (int b=1;b<(1<<n);++b) {
             int c = 0, x = 1 ; 
             for (int j=0;j<n;++j) {
