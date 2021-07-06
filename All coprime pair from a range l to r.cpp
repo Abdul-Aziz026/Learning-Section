@@ -43,9 +43,9 @@ signed main() {
         gcd_greater_than_1 += cnt ; 
     }
     int total_pair = (r-l+1) * (r-l+1) ; 
-    int ans = total_pair - gcd_greater_than_1 ; 
+    int Coprime_pair = total_pair - gcd_greater_than_1 ; 
     //
-    cout << ans << endl ; 
+    cout << Coprime_pair << endl ; 
     return 0;
 }
 
