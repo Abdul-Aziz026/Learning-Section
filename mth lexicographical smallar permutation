@@ -1,0 +1,52 @@
+// mth element of an permutation...
+#include <bits/stdc++.h>
+using namespace std;
+
+#define int long long 
+
+signed main() {
+    ios_base::sync_with_stdio(0) ; 
+    cin.tie(0) ; 
+
+    int n, m ; cin >> n >> m ; 
+    set <int> s ; 
+    for (int i=1;i<=n;++i) s.insert(i) ; 
+    for (int i=1;i<=n;++i) {
+        int cur = 1 ; 
+        for (int j=s.size()-1;j>1;j--) {
+            cur *= j ; 
+            if (cur > m) break ; 
+        }
+        if (cur < m) { 
+            int l=1, r=s.size(), ans = 1 ; 
+            while (l <= r) { 
+                int mid = (l+r)/2 ; 
+                if (mid*cur >= m) {
+                    ans = mid ; 
+                    r = mid-1 ; 
+                }
+                else {
+                    l = mid+1 ; 
+                }
+            }
+            m -= (ans-1)*cur ; 
+            int element = ans ; 
+            for (auto i: s) {
+                ans-- ; 
+                if (ans == 0) {
+                    element = i ; 
+                    break ; 
+                }
+            }
+            cout << element << " " ; 
+            s.erase(element) ; 
+        }
+        else {
+            cout << *s.begin() << " " ; 
+            s.erase(*s.begin()) ; 
+        }
+    }
+    cout << endl ; 
+    return 0;
+}
+
