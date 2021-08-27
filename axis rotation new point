@@ -1,0 +1,23 @@
+// remember for clockwise axis rotation θ will be unchanged θ = θ ; 
+// remember for counter clockwise axis rotation θ will be changed as θ = (360 - θ) ; 
+
+#include <bits/stdc++.h>
+using namespace std;
+
+#define int long long 
+#define   pi   acos(-1.0) 
+
+signed main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); 
+
+    long double x, y, theta,xx, yy ; 
+    cin >> theta >> x >> y ; 
+    theta = (theta * pi)/180.0 ; 
+    xx = (x * cos(theta)) + (y * sin(theta)) ; 
+    yy = (y * cos(theta)) - (x * sin(theta)) ; 
+    // this result is for axis clockwise rotation
+    cout << xx << " " << yy << endl ; 
+    return 0;
+}
+
