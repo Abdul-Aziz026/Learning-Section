@@ -1,9 +1,13 @@
-problem link:----
-const int N = 2e5;
-int n, arr[N], Table[20][N];
- 
+/*Bismillahir Rahmanir Rahim....*/
+#include <bits/stdc++.h>
+using namespace std;
+
+#define int long long 
+const int N = 2e5+2;
+int n, d[N], Table[20][N];
+
 void sparsh_table() {
-    for (int i=1;i<=n;++i) Table[0][i] = arr[i] ;
+    for (int i=1;i<=n;++i) Table[0][i] = d[i] ;
     for (int r=1;(1<<r)<=n;++r) {
         for (int i=1;i+(1<<r)-1 <= n;++i) {
             int x = Table[r-1][i] ;
@@ -12,12 +16,54 @@ void sparsh_table() {
         }
     }
 }
- 
+
 int query(int i, int j){
     int l = log2(j-i+1);
     int x = Table[l][i] ; 
     int y = Table[l][j-(1<<l)+1];
     return __gcd(x, y);
 }
- 
+
+void Max(int &a, int b){
+    if (b > a) a = b;
+}
+
+void solve(){
+    int pre, x ; 
+    cin >> n >> pre ; 
+    for (int i=1;i<n;++i) {
+        cin >> x ; 
+        d[i] = abs(pre-x); 
+        pre = x ;
+    } n--; 
+    sparsh_table();
+    int ans = 1;
+    for (int i=1;i<=n;++i) {
+        int l=i, r=n;
+        while (l <= r) {
+            int m = (l+r)>>1;
+            int x = query(i, m);
+            if (x > 1) {
+                Max(ans, m-i+2);
+                l = m+1;
+            }
+            else r = m-1 ;
+        }
+    }
+    cout << ans << endl;
+}
+
+signed main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); 
+
+    int t=1; cin >> t ; 
+    while (t--) solve() ;
+    return 0;
+}
+
+/*
+problem link:----
 https://codeforces.com/contest/1549/problem/D
+
+*/ 
