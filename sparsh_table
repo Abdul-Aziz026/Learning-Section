@@ -1,2 +1,23 @@
 problem link:----
+const int N = 2e5;
+int n, arr[N], Table[20][N];
+ 
+void sparsh_table() {
+    for (int i=1;i<=n;++i) Table[0][i] = arr[i] ;
+    for (int r=1;(1<<r)<=n;++r) {
+        for (int i=1;i+(1<<r)-1 <= n;++i) {
+            int x = Table[r-1][i] ;
+            int y = Table[r-1][i+(1<<r-1)] ;
+            Table[r][i] = __gcd(x, y) ;
+        }
+    }
+}
+ 
+int query(int i, int j){
+    int l = log2(j-i+1);
+    int x = Table[l][i] ; 
+    int y = Table[l][j-(1<<l)+1];
+    return __gcd(x, y);
+}
+ 
 https://codeforces.com/contest/1549/problem/D
