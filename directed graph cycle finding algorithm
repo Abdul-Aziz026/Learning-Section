@@ -1,3 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define int long long 
+const int N = 3e5+1 ; 
+
+signed main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); 
+
+    int n, m ;
+    cin >> n >> m ; 
+    vector<vector<int>> g(n+1) ;
+    vector <int> cnt(n+1, 0);
+    while (m--) {
+        int a, b; cin >> a >> b ; 
+        cnt[a]++; cnt[b]++;
+        g[a].push_back(b) ;
+        g[b].push_back(a) ;
+    }
+    queue <int> q;
+    for (int i=1;i<=n;++i) {
+        if (cnt[i] <= 1) {
+            q.push(i) ;
+        }
+    }
+    set <int> s;
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop();
+        s.insert(u) ;
+        for (auto i: g[u]) {
+            cnt[i]--;
+            if (cnt[i]==1) {
+                q.push(i) ;
+            }
+        }
+    }
+    cout << ((s.size()==n)?"Yes":"No") << endl;
+    return 0;
+}
+
+
+
+
+
+another one code:------>
 
 #include <bits/stdc++.h>
 using namespace std;
