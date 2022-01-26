@@ -1,3 +1,17 @@
+/*
+Using Seive how to find odd count prime devisor	
+
+8=2*2*2 odd prime devisor  2
+12=2*2*3 odd      …..       …    3
+6 = 2*3  ..    ……     ………..       6
+18 = 2*3*3    ….       ………       2
+
+
+problem link : https://codeforces.com/contest/1470/problem/B
+*/
+// solution ------>>> 
+
+
 const int N = 1e6+2 ; 
 int  perfect[N] ;
 vector <int> pr(N, 1) ;
