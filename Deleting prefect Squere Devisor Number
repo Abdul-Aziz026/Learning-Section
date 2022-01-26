@@ -1,0 +1,19 @@
+const int N = 1e6+2 ; 
+int  perfect[N] ;
+vector <int> pr(N, 1) ;
+ 
+void seive() {
+	iota(pr.begin(), pr.end(), 0) ;
+	int n = 1e6 ;
+	for (int i=1;i*i<=n;++i) {
+		perfect[i*i] = true ;
+	}
+	for(int i=2;i<=n;++i) {
+		if (!perfect[i]) continue ;
+		int x = pr[i] ;
+		for (int j=i;j<=n;j+=i) {
+			pr[j] /= x ;
+		}
+	}
+}
+ 
