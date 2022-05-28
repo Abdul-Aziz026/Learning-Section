@@ -41,10 +41,13 @@ signed main() {
             if (c&1) cnt += (r/x) - ((i-1)/x) ; 
             else cnt -= (r/x) - ((i-1)/x) ; 
         }
+        // for unordered pairing (cnt-1) added
+        // for ordered pairing (cnt-1) not added
         cnt += cnt-1 ; 
         gcd_greater_than_1 += cnt ; 
     }
-    int total_pair = (r-l+1) * (r-l+1) ; 
+    // for ordered pairing  the formula will be changed for total pair ( ...total_pair = (r-l+1) * (r-l) / 2... )
+    int total_pair = (r-l+1) * (r-l+1) ;
     int Coprime_pair = total_pair - gcd_greater_than_1 ; 
     //
     cout << Coprime_pair << endl ; 
