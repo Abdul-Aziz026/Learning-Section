@@ -41,7 +41,7 @@ signed main() {
             if (c&1) cnt += (r/x) - ((i-1)/x) ; 
             else cnt -= (r/x) - ((i-1)/x) ; 
         }
-        // for unordered pairing (cnt-1) added
+        // for unordered pairing (cnt-1) added because (1, 2) and (2, 1) are different...
         // for ordered pairing (cnt-1) not added
         cnt += cnt-1 ; 
         gcd_greater_than_1 += cnt ; 
